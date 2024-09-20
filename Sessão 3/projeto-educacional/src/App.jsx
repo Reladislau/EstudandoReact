@@ -8,7 +8,9 @@ import { useState } from "react";
 import CarDetails from "./components/carDetails";
 import FragmenstsTag from "./components/FragmenstsTag";
 import Children from "./components/Children";
-
+import FunctionComponent from "./components/FunctionComponent";
+import Message from "./components/Message";
+import MessageController from "./components/MessageController";
 
 function App() {
   //const bola = "Joaquim";
@@ -16,8 +18,18 @@ function App() {
   const cars = [
     { id: 1, marca: "Ferrari", ano: 2017, cor: "Preto", newCar: true },
     { id: 2, marca: "Honda", ano: 2000, cor: "Branco", newCar: false },
-    { id: 1, marca: "Tesla", ano: 2024, cor: "Cinza", newCar: true },
+    { id: 3, marca: "Tesla", ano: 2024, cor: "Cinza", newCar: true },
   ];
+
+  function ShowMesenge(){
+    alert("Você é Legal");
+  };
+
+  const [mensagem, setMensagem] = useState();
+
+  const handleMensagem = (msg) => {
+    setMensagem(msg);
+  }
 
   return (
     <>
@@ -55,6 +67,7 @@ function App() {
 
       {cars.map((car) => (
         <CarDetails
+          key={car.id}
           marca={car.marca}
           ano={car.ano}
           cor={car.cor}
@@ -63,14 +76,21 @@ function App() {
       ))}
 
       {/* Fragemnts */}
-      <FragmenstsTag propsfragent= "Testing"/>
+      <FragmenstsTag propsfragent="Testing" />
 
       {/* Children Prop */}
-      <Children myValue = "Testando o Valor">
+      <Children myValue="Testando o Valor">
         <p>Este é o conteúdo</p>
-        
       </Children>
 
+      {/* Funções em Props */}
+
+      <FunctionComponent MyFunction = {ShowMesenge}/>
+
+      {/*State Lift */}
+
+      <Message MyMessage = {mensagem}/>
+      <MessageController Controller = {handleMensagem}/>
     </>
   );
 }
