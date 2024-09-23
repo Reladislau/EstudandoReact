@@ -1,0 +1,23 @@
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+
+.title{
+    color: darkslateblue;
+    font-family: Arial;
+    font-size: 30px;
+    align-items: center;
+    padding: 15px;
+}
+
+
+.text{
+    color: black;
+    font-size: 20px;
+    align-items: center;
+}
